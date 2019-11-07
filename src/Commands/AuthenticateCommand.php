@@ -38,7 +38,9 @@ class AuthenticateCommand extends AbstractCommand
             Constants::CLIENT_INTERACTIVE |
             Constants::CLIENT_TRANSACTIONS |
             Constants::CLIENT_SECURE_CONNECTION |
-            Constants::CLIENT_CONNECT_WITH_DB;
+            Constants::CLIENT_CONNECT_WITH_DB |
+            Constants::CLIENT_MULTI_STATEMENTS |
+            Constants::CLIENT_MULTI_RESULTS;
 
         return pack('VVc', $clientFlags, $this->maxPacketSize, $this->charsetNumber)
             . "\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00\x00"

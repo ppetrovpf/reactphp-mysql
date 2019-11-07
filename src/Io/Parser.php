@@ -3,6 +3,7 @@
 namespace React\MySQL\Io;
 
 use React\MySQL\Commands\AuthenticateCommand;
+use React\MySQL\Commands\CommandInterface;
 use React\MySQL\Commands\QueryCommand;
 use React\MySQL\Commands\QuitCommand;
 use React\MySQL\Exception;
@@ -310,7 +311,10 @@ packet:
             $command->warningCount    = $this->warningCount;
             $command->message      = $this->message;
         }
-        $command->emit('success');
+
+        if ($command instanceof CommandInterface) {
+            $command->emit('success');
+        }
     }
 
     public function onClose()
